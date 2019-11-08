@@ -1,0 +1,83 @@
+{
+    "name": "xde-vscode",
+    "displayName": "XDE_vscode",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "blackmoron",
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "workspaceContains:*.py"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.generateClassDiagram",
+                "title": "Generate Class Diagram"
+            },
+            {
+                "command": "extension.generatePackageDiagram",
+                "title": "Generate Package Diagram"
+            },
+            {
+                "command": "extension.generateWordCloud",
+                "title": "Generate Word Cloud"
+            },
+            {
+                "command": "extension.generateCity",
+                "title": "Generate City Metaphor"
+            },
+            {
+                "command": "extension.copySearchResultsToXDE",
+                "title": "Copy to XDE"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.generateClassDiagram",
+                    "group": "0_xde"
+                },
+                {
+                    "command": "extension.generatePackageDiagram",
+                    "group": "0_xde"
+                },
+                {
+                    "when": "resourceLangId == python",
+                    "command": "extension.generateWordCloud",
+                    "group": "0_xde"
+                },
+                {
+                    "command": "extension.generateCity",
+                    "group": "0_xde"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "extension.copySearchResultsToXDE",
+                "key": "ctrl+alt+c",
+                "mac": "cmd+alt+c"
+            }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "eslint": "^4.11.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "ws": "^6.2.0"
+    }
+}
